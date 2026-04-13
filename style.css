@@ -95,29 +95,14 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-/* ─── TEXTOS FUERA DEL CONTENEDOR ─── */
-body > h1 {
+/* ─── TITULO */
+.titulo {
     text-align: center;
     margin-top: 2rem;
     color: #1a73e8;
 }
 
-body > p {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-/* ─── CONTENEDOR TARJETAS ─── */
-.contenedor-principal {
-    max-width: 1100px;
-    margin: 2rem auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-/* ─── TARJETA CV ─── */
+/* ─── TARJETAS ─── */
 .tarjeta {
     background: white;
     border-radius: 20px;
@@ -127,9 +112,10 @@ body > p {
     text-align: center;
     position: relative;
     transition: 0.3s;
+    margin: 0 15px; /* 👈 espacio lateral */
 }
 
-/* CABECERA SUPERIOR */
+/* CABECERA */
 .tarjeta::before {
     content: "";
     position: absolute;
@@ -153,20 +139,17 @@ body > p {
     z-index: 2;
 }
 
-/* NOMBRE */
-.tarjeta-header h1,
-.tarjeta-header h2 {
+/* TEXTOS */
+.tarjeta-header h1 {
     margin-top: 10px;
     font-size: 1.1rem;
 }
 
-/* CARRERA */
 .subtitulo {
     font-size: 0.85rem;
     color: #888;
 }
 
-/* DESCRIPCIÓN */
 .tarjeta-cuerpo p {
     font-size: 0.85rem;
     color: #555;
@@ -188,7 +171,7 @@ body > p {
     margin: 3px;
 }
 
-/* BOTÓN DESHABILITADO */
+/* BOTÓN */
 .btn-contacto {
     margin-top: 15px;
     width: 100%;
@@ -200,7 +183,42 @@ body > p {
     cursor: not-allowed;
 }
 
-/* EFECTO HOVER */
+/* HOVER */
 .tarjeta:hover {
     transform: translateY(-6px);
+}
+
+/* ─── SCROLL INFINITO (ARREGLADO 🔥) ─── */
+.scroll {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 60px 0; /* 👈 espacio arriba y abajo */
+}
+
+.scroll-contenido {
+    display: flex;
+    width: max-content;
+    animation: mover 25s linear infinite; /* 👈 más suave */
+    align-items: center; /* 👈 centra bien */
+}
+
+/* IMPORTANTE */
+.scroll .tarjeta {
+    flex: 0 0 auto;
+}
+
+/* ANIMACIÓN */
+@keyframes mover {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* PAUSA AL PASAR MOUSE */
+.scroll-contenido:hover {
+    animation-play-state: paused;
 }
